@@ -13,14 +13,29 @@ class Solution:
     #                 return [first_el, first_el + 1 + second_el]
     
 #   Second Solution 
+    # def twoSum(self, nums, target):
+    #     dnums = {y:x for x,y in enumerate(nums)}
+    #     print(nums)
+    #     print(dnums)
+    #     for first_el, first_el_val in enumerate(nums):
+    #         complement = dnums.get(target - first_el_val)
+    #         if complement != None and complement != first_el:
+    #             return [first_el, complement]
+        
+    #     raise AttributeError("No two sum solution")
+
+
+#   Third Solution 
     def twoSum(self, nums, target):
-        dnums = {y:x for x,y in enumerate(nums)}
+        dnums = {}
         print(nums)
-        print(dnums)
         for first_el, first_el_val in enumerate(nums):
+            print(dnums)
             complement = dnums.get(target - first_el_val)
-            if complement != None and complement != first_el_val:
-                return [first_el, complement]
+            if complement != None and complement != first_el:
+                return [complement, first_el]
+            else:
+                dnums[first_el_val]=first_el
         
         raise AttributeError("No two sum solution")
 
