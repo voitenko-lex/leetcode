@@ -43,14 +43,14 @@ class Solution:
             if l2:
                 local_sum += int(l2.val)
 
-            if local_sum > 0:
-                curval.val = local_sum % 10
-                curval.next.val = local_sum // 10
-                curval = curval.next
-                l1 = l1.next
-                l2 = l2.next
-            else:
-                curval = None
+            curval.val = local_sum % 10
+            curval.next.val = local_sum // 10
+            lastval = curval
+            curval = curval.next
+            if l1: l1 = l1.next
+            if l2: l2 = l2.next
+        else:
+            lastval.next = None
 
         # print(f"result {result}")
         return result
@@ -80,7 +80,7 @@ class TestStringMethods(unittest.TestCase):
         print("===========")
         print(self.sol.addTwoNumbers(test_val1, test_val2))
         
-        # self.assertEqual(self.sol.addTwoNumbers(test_val1, test_val2), test_output)
+        self.assertEqual(str(self.sol.addTwoNumbers(test_val1, test_val2)), str(test_result))
 
 
         # Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
@@ -90,8 +90,14 @@ class TestStringMethods(unittest.TestCase):
     def test_sample00(self):
         self.addTwoNumbersTest(203, 308)
 
-    # def test_sample01(self):
-    #     self.addTwoNumbersTest(202, 0)
+    def test_sample01(self):
+        self.addTwoNumbersTest(202, 0)
+
+    def test_sample03(self):
+        self.addTwoNumbersTest(789, 333)
+
+    def test_sample04(self):
+        self.addTwoNumbersTest(2, 10)
 
 if __name__ == '__main__':
     unittest.main()
