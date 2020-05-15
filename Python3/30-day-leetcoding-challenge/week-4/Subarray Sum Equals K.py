@@ -2,95 +2,93 @@
 # -*- coding: utf-8 -*-
 
 """
-Given an array of integers and an integer k, you need to find the total number of continuous 
-subarrays whose sum equals to k.
+## Find the Town Judge
+
+In a town, there are N people labelled from 1 to N.  There is a rumor that one of these people is secretly the town judge.
+If the town judge exists, then:
+    - The town judge trusts nobody.
+    - Everybody (except for the town judge) trusts the town judge.
+    - There is exactly one person that satisfies properties 1 and 2.
+
+You are given trust, an array of pairs trust[i] = [a, b] representing that the person labelled a trusts the person labelled b.
+If the town judge exists and can be identified, return the label of the town judge.  Otherwise, return -1.
+
+Note:
+
+    1 <= N <= 1000
+    trust.length <= 10000
+    trust[i] are all different
+    trust[i][0] != trust[i][1]
+    1 <= trust[i][0], trust[i][1] <= N
+
 
 Example 1:
+    Input: N = 2, trust = [[1,2]]
+    Output: 2
 
-Input:nums = [1,1,1], k = 2
-Output: 2
+Example 2:
+    Input: N = 3, trust = [[1,3],[2,3]]
+    Output: 3
+
+Example 3:
+    Input: N = 3, trust = [[1,3],[2,3],[3,1]]
+    Output: -1
+
+Example 4:
+    Input: N = 3, trust = [[1,2],[2,3]]
+    Output: -1
+
+Example 5:
+    Input: N = 4, trust = [[1,3],[1,4],[2,3],[2,4],[4,3]]
+    Output: 3
 """
 
 import unittest
 from typing import List, Set, Tuple, Dict
 
 class Solution:
-    # def subarraySum(self, nums: List[int], k: int) -> int:
-    #     result = 0
+    def findJudge(self, N: int, trust: List[List[int]]) -> int:
+        scores = {x:0 for x in range(1, 1+N)}
+        for pair in trust:
+            # scores[pair[0]] -= 1
+            try:
+                scores.pop(pair[0])
+            except KeyError:
+                pass
+            scores[pair[1]] += 1
 
-    #     for i in range(len(nums)):
-    #         print(f"init i = {i}")
-    #         sum = nums[i]
-    #         while True:
-    #             if sum == k:
-    #                 result += 1
-    #             if (i < (len(nums)-1)):
-    #                 i += 1
-    #                 sum += nums[i]
-    #             else:
-    #                 break
-    #     return result
-
-    def subarraySum(self, nums: List[int], k: int) -> int:
-        result = 0
-        sums = []
-        sums_hash = {}
-        sum = 0
-
-        for i in range(len(nums)):
-            sum += nums[i]
-            sums.append(sum)
-            if sum in sums_hash:
-                sums_hash[sum].append(i)
-            else:
-                sums_hash[sum] = [i]
-
-        # print(f"k = {k}")
-        # print(f"sums = {sums}")
-        # print(f"sums_hash = {sums_hash}")
+        print(f"\n {scores}")
+        for el in scores:
+            if scores[el] == N-1: return el
         
-        for i in range(len(sums)):
-            if sums[i] == k: result += 1
-            diff = k + sums[i]
-            # print(f"i = {i} sums[i]={sums[i]} diff = {diff}")
-            if diff in sums_hash:
-                for j in sums_hash[diff]:
-                    if j > i:
-                        result += 1
-                        # print(f"{sums[j]}({j}) - {sums[i]}({i})")
-
-        return result
-            
-            
+        return -1
 
 
 class TestMethods(unittest.TestCase):
     sol = Solution()
 
     def test_sample00(self):
-        self.assertEqual(2, self.sol.subarraySum([1,1,1], k=2))
+        self.assertEqual(2, self.sol.findJudge(N=2, trust=[[1,2]]))
 
     def test_sample01(self):
-        self.assertEqual(0, self.sol.subarraySum([], k=5))
+        self.assertEqual(3, self.sol.findJudge(N=3, trust=[[1,3],[2,3]]))
 
     def test_sample02(self):
-        self.assertEqual(1, self.sol.subarraySum([1], k=1))
+        self.assertEqual(-1, self.sol.findJudge(N=3, trust=[[1,3],[2,3],[3,1]]))
 
     def test_sample03(self):
-        self.assertEqual(2, self.sol.subarraySum([100,1,2,3,4], k=3))
+        self.assertEqual(-1, self.sol.findJudge(N=3, trust=[[1,2],[2,3]]))
 
     def test_sample04(self):
-        self.assertEqual(1, self.sol.subarraySum([28,54,7,-70,22,65,-6], k=100))
+        self.assertEqual(3, self.sol.findJudge(N=4, trust=[[1,3],[1,4],[2,3],[2,4],[4,3]]))
 
     def test_sample05(self):
-        self.assertEqual(55, self.sol.subarraySum([0,0,0,0,0,0,0,0,0,0], k=0))
+        self.assertEqual(1, self.sol.findJudge(N=1, trust=[]))
+
 
 if __name__ == '__main__':
     if True:
         unittest.main()
     else:
         sol = Solution()
-        # print(sol.subarraySum([1, 1, 3, -4, 0, 4], k=4))
-        # print(sol.subarraySum([1]*10, k=10))
-        print(sol.subarraySum(range(-5,20000), k=10))
-        # print(sol.subarraySum([100,1,2,3,4], k=3))
+        print(sol.findJudge(N=1, trust=[]))
