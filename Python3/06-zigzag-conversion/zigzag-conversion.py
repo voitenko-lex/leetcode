@@ -35,48 +35,47 @@ import unittest
 
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
-        lstResult = []
+        lstResult = [[str("")] * numRows]
         strResult = ""
-        substr = s
+        
+        state = "zig"
+        col = 0
+        row = 0
 
-        while True:
-            if len(substr)>numRows:
-                lstResult.append(list(substr[:numRows]))
-                substr = substr[numRows:]
-            elif len(substr)>0:
-                lstResult.append(list(substr))
-                substr = ""
-            else:
-                break
+        for char in s:
 
-            if len(substr)>(numRows-2):
-                if numRows>1:
-                    lstResult.append([str('')] + list(substr[:(numRows-2)][::-1]))
+            while True:
+                # print(f"char = {char} row = {row} col = {col}")
+                if row < 0:
+                    row = 0
+                elif row == 0:
+                    state = "zig"
+                    break
+                elif row >= numRows:
+                    row = numRows - 2
+                    lstResult.append([str("")] * numRows)
+                    col += 1
+                    state = "zag"
                 else:
-                    lstResult.append(list(substr[:(numRows-2)][::-1]))          
-                substr = substr[(numRows-2):]
-            elif len(substr)>0:
-                if numRows>1:
-                    lstResult.append([str('')] + list(substr[::-1]))
-                else:
-                    lstResult.append(list(substr[::-1]))
+                    break
+            
+            lstResult[col][row] = char
 
-                substr = ""
+            if state == "zig":
+                row += 1
             else:
-                break
-
-        for i in range(numRows):
-            for j in range(len(lstResult)):
-                try:
-                    # print(f"j = {j}, i = {i} {str(lstResult[j][i])}")
-                    strResult += str(lstResult[j][i])
-                except IndexError:
-                    pass
+                lstResult.append([str("")] * numRows)
+                col += 1
+                row -= 1
 
 
-        print(f"lstResult = {lstResult} len:{len(lstResult)}")
-        print(f"strResult = {strResult}")
-
+        # print(f"lstResult = {lstResult}")
+        
+        for row in range(numRows):
+            for col in range(len(lstResult)):
+                strResult += lstResult[col][row]
+        
+        # print(f"strResult = {strResult}")
         return strResult
 
 
@@ -95,10 +94,14 @@ class TestMethods(unittest.TestCase):
     def test_sample03(self):
         self.assertEqual("ABCD", self.sol.convert(s = "ABCD", numRows = 1))
 
+    def test_sample04(self):
+        self.assertEqual("ACEBDF", self.sol.convert(s = "ABCDEF", numRows = 2))
+
 if __name__ == '__main__':
-    if False:
+    if True:
         unittest.main()
     else:
         sol = Solution()
-        sol.convert(s = "ABCD", numRows = 1)
-        # sol.convert(s = "123456789", numRows = 3)
+        # sol.convert(s = "ABC", numRows = 1)
+        # sol.convert(s = "ABCDEF", numRows = 2)
+        sol.convert(s = "123456789", numRows = 1)

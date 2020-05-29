@@ -25,9 +25,22 @@ assume that your function returns 0 when the reversed integer overflows.
 import unittest
 
 class Solution:
-    # def reverse(self, x: int) -> int:
-    def reverse(self, x):
-        pass
+    def reverse(self, x: int) -> int:
+        y = str(x)
+        if y[0] == '-':
+            revStr = y[0] + y[:0:-1]
+        else:
+            revStr = y[::-1]
+        
+        try:
+            revInt = int(revStr)
+        except:
+            revInt = 0
+
+        print(f"{type(revInt)} {revInt}")
+        
+        return revInt
+
 
 class TestMethods(unittest.TestCase):
     sol = Solution()
@@ -45,4 +58,5 @@ if __name__ == '__main__':
     if False:
         unittest.main()
     else:
-        pass
+        sol = Solution()
+        sol.reverse(123456789)
