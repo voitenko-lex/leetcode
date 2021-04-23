@@ -33,19 +33,21 @@ import unittest
 class Solution:
     def lengthOfLongestSubstring(self, s):
         spos = 0
-        epos = 0
+        epos = -1
         result = 0
+        buffer = {}
 
         for pos, char in enumerate(s):
-            print("{} {} in s[{};{}] {} = {}".format(pos, char, spos, epos, s[spos:epos+1], char in s[spos:epos]))
-            if char in s[spos:epos+1]:
-                if (epos-spos) > result:
-                    result = (epos-spos) + 1
+            epos += 1
+            # print(f"{pos} {char} in s[{spos};{epos}] {s[spos:epos+1]} {buffer}")
+            if (char in buffer) and (buffer[char] >= spos):
+                spos = buffer[char] + 1
+            buffer[char] = pos
 
-                spos = pos
-                epos = pos
-            else:
-                epos = pos
+            if (epos - spos + 1) > result:
+                result = (epos - spos + 1)
+
+            # print(f"result = {result}")
 
         return result
 
@@ -69,7 +71,7 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(0, self.sol.lengthOfLongestSubstring(""))
 
 if __name__ == '__main__':
-    if False:
+    if True:
         unittest.main()
     else:
         sol = Solution()

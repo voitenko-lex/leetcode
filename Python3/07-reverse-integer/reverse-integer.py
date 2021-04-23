@@ -18,7 +18,7 @@ Output: 21
 
 Note:
 Assume we are dealing with an environment which could only store integers within the 
-32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, 
+32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, 
 assume that your function returns 0 when the reversed integer overflows.
 """
 
@@ -26,20 +26,20 @@ import unittest
 
 class Solution:
     def reverse(self, x: int) -> int:
-        y = str(x)
-        if y[0] == '-':
-            revStr = y[0] + y[:0:-1]
-        else:
-            revStr = y[::-1]
+        result = 0
+        k = 1 if x >= 0 else -1
+        x *= k
+        while x >= 10:
+            a = x % 10
+            result = result * 10 + a
+            x = x // 10
+            # print(f"x={x} result={result}" )
         
-        try:
-            revInt = int(revStr)
-        except:
-            revInt = 0
+        result = k*(result * 10 + x)
+        if abs(result) > 2**31: result = 0
+        return result
 
-        print(f"{type(revInt)} {revInt}")
-        
-        return revInt
+
 
 
 class TestMethods(unittest.TestCase):
@@ -54,9 +54,15 @@ class TestMethods(unittest.TestCase):
     def test_sample02(self):
         self.assertEqual(21, self.sol.reverse(120))
 
+    def test_sample03(self):
+        self.assertEqual(0, self.sol.reverse(123456789))
+
 if __name__ == '__main__':
     if False:
         unittest.main()
     else:
         sol = Solution()
-        sol.reverse(123456789)
+        print(sol.reverse(-1201))
+        # sol.reverse(12)
+        # x = -12
+        # print(f"x={x} |x|={abs(x)} {x // 10} {abs(x) // 10}")
