@@ -3,7 +3,7 @@
 
 """
 ### 10. Regular Expression Matching
-Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*' where: 
+Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*' where:
 
 '.' Matches any single character.​​​​
 '*' Matches zero or more of the preceding element.
@@ -33,7 +33,7 @@ Example 4:
 Example 5:
     Input: s = "mississippi", p = "mis*is*p*."
     Output: false
-    
+
 
 Constraints:
 
@@ -52,7 +52,7 @@ from typing import List, Set, Tuple, Dict
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
         print(f"String: {s}\nPattern: {p}")
-        
+
         pos_s = 0
         for pos_p in range(len(p)):
             print(f"Current pattern: {pos_p} {p[pos_p]}, string: {s[pos_s:]}")
@@ -60,7 +60,7 @@ class Solution:
                 pos_s +=1
             else:
                 return False
-        
+
         return pos_s == len(s)
 
 
@@ -94,7 +94,9 @@ class TestMethods(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

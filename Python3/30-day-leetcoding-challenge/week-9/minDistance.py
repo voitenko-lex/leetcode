@@ -16,7 +16,7 @@ Example 1:
 
 Input: word1 = "horse", word2 = "ros"
 Output: 3
-Explanation: 
+Explanation:
 horse -> rorse (replace 'h' with 'r')
 rorse -> rose (remove 'r')
 rose -> ros (remove 'e')
@@ -25,7 +25,7 @@ Example 2:
 
 Input: word1 = "intention", word2 = "execution"
 Output: 5
-Explanation: 
+Explanation:
 intention -> inention (remove 't')
 inention -> enention (replace 'i' with 'e')
 enention -> exention (replace 'n' with 'x')
@@ -40,7 +40,7 @@ from typing import List, Set, Tuple, Dict
 
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
-        
+
         cur_row = [num for num in range(len(word1) + 1)]
         prev_row = []
 
@@ -49,20 +49,20 @@ class Solution:
             prev_row = cur_row
             cur_row = [0 for x in range(len(word1) + 1) ]
             for word1_pos in range(len(word1) + 1):
-                if word1_pos == 0: 
+                if word1_pos == 0:
                     cur_row[word1_pos] = word2_pos
                 else:
                     if word1[word1_pos - 1] == word2[word2_pos - 1]:
                         cur_row[word1_pos] = prev_row[word1_pos - 1]
                     else:
-                        cur_row[word1_pos] = 1 + min(   cur_row[word1_pos - 1], 
+                        cur_row[word1_pos] = 1 + min(   cur_row[word1_pos - 1],
                                                         prev_row[word1_pos],
                                                         prev_row[word1_pos - 1])
 
             # print(cur_row)
-        
+
         return cur_row[len(word1)]
-            
+
     # def minDistance(self, word1: str, word2: str) -> int:
     #     @functools.lru_cache(None)
     #     def dfs(i=0, j=0):
@@ -88,7 +88,9 @@ class TestMethods(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

@@ -5,12 +5,12 @@
 ### Possible Bipartition
 
 Given a set of N people (numbered 1, 2, ..., N), we would like to split everyone into two groups of any size.
-Each person may dislike some other people, and they should not go into the same group. 
-Formally, if dislikes[i] = [a, b], it means it is not allowed to put the people numbered a and b 
+Each person may dislike some other people, and they should not go into the same group.
+Formally, if dislikes[i] = [a, b], it means it is not allowed to put the people numbered a and b
 into the same group.
 Return true if and only if it is possible to split everyone into two groups in this way.
 
- 
+
 
 Example 1:
 
@@ -28,7 +28,7 @@ Example 3:
     Input: N = 5, dislikes = [[1,2],[2,3],[3,4],[4,5],[1,5]]
     Output: false
 
- 
+
 
 Note:
     1 <= N <= 2000
@@ -86,11 +86,11 @@ class Solution:
         for a, b in dislikes:
             connections[a].append(b)
             connections[b].append(a)
-        
+
         colors = {}
         for i in range(1, N+1):
             if i not in colors and not dfs(i): return False
-        return True      
+        return True
 
 
 
@@ -105,13 +105,15 @@ class TestMethods(unittest.TestCase):
 
     def test_sample02(self):
         self.assertEqual(False, self.sol.possibleBipartition(N = 5, dislikes = [[1,2],[2,3],[3,4],[4,5],[1,5]]))
-    
+
     def test_sample03(self):
         self.assertEqual(True, self.sol.possibleBipartition(N = 10, dislikes = [[4,7],[4,8],[2,8],[8,9],[1,6],[5,8],[1,2],[6,7],[3,10],[8,10],[1,5],[7,10],[1,10],[3,5],[3,6],[1,4],[3,9],[2,3],[1,9],[7,9],[2,7],[6,8],[5,7],[3,4]]))
-    
+
 
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
- Given an arbitrary ransom note string and another string containing letters from all the magazines, 
- write a function that will return true if the ransom note can be constructed from the magazines ; 
+ Given an arbitrary ransom note string and another string containing letters from all the magazines,
+ write a function that will return true if the ransom note can be constructed from the magazines ;
  otherwise, it will return false.
 
 Each letter in the magazine string can only be used once in your ransom note.
@@ -28,7 +28,7 @@ class Solution:
                 magazine = magazine.replace(char, "", 1)
             else:
                 return False
-        
+
         return True
 
 
@@ -46,7 +46,9 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(True, self.sol.canConstruct("aa", "aab"))
 
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

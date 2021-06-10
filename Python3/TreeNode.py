@@ -29,20 +29,20 @@ Example 2:
 Follow up:
 What if the BST is modified (insert/delete operations) often and you need to find the kth smallest frequently? How would you optimize the kthSmallest routine?
 
- 
+
 
 Constraints:
 
     The number of elements of the BST is between 1 to 10^4.
     You may assume k is always valid, 1 ≤ k ≤ BST's total elements.
 
-   Hide Hint #1  
+   Hide Hint #1
 Try to utilize the property of a BST.
-   Hide Hint #2  
+   Hide Hint #2
 Try in-order traversal. (Credits to @chan13)
-   Hide Hint #3  
+   Hide Hint #3
 What if you could modify the BST node's structure?
-   Hide Hint #4  
+   Hide Hint #4
 The optimal runtime complexity is O(height of BST).
 """
 
@@ -57,7 +57,7 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-    
+
     def get_depth(self, depth = 0):
         depth += 1
         depth_left = 0
@@ -66,9 +66,9 @@ class TreeNode:
             depth_left = self.left.get_depth()
         if self.right:
             depth_right = self.right.get_depth()
-        
+
         return depth + max(depth_left, depth_right)
-    
+
     def to_list(self, tree_list=None, n=1):
         if not tree_list:
             tree_list = [None for _ in range(2 ** self.get_depth())]
@@ -104,8 +104,8 @@ class TreeNode:
                 result += str(val)
             else:
                 result += "\t"
-        
-        return result   
+
+        return result
 
 
     @staticmethod
@@ -121,11 +121,11 @@ class TreeNode:
                     list_nodes[root_node-1].left = new_node
                 else:
                     list_nodes[root_node-1].right = new_node
-        
+
         return list_nodes[0]
 
 
-        
+
 
 class Solution:
     def kthSmallest(self, root: TreeNode, k: int) -> int:
@@ -150,7 +150,9 @@ class TestMethods(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         tree = TreeNode.make_TreeNode([5,3,6,2,4,None,None,1])
@@ -159,14 +161,14 @@ if __name__ == '__main__':
         # print(tree)
         print()
         # sol = Solution()
-        # tree = TreeNode(    1, 
-        #                     TreeNode(   2, 
-        #                                 TreeNode(   4, 
-        #                                             None, 
-        #                                             None), 
-        #                                 None), 
-        #                     TreeNode(   3, 
-        #                                 None, 
+        # tree = TreeNode(    1,
+        #                     TreeNode(   2,
+        #                                 TreeNode(   4,
+        #                                             None,
+        #                                             None),
+        #                                 None),
+        #                     TreeNode(   3,
+        #                                 None,
         #                                 None))
         # # tree.PrintTree()
         # print(sol.isCousins(root = tree, x = 3, y = 4))

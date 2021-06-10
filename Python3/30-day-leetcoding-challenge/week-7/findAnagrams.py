@@ -5,7 +5,7 @@
 Find All Anagrams in a String
 Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
 
-Strings consists of lowercase English letters only and the length of both strings s and p 
+Strings consists of lowercase English letters only and the length of both strings s and p
 will not be larger than 20,100.
 
 The order of output does not matter.
@@ -47,7 +47,7 @@ class Solution:
     #     for pos, char in enumerate(s):
     #         if char in search_indexes.keys():
     #             search_indexes[char].add(pos)
-        
+
     #     print(f"search_indexes = {search_indexes}")
 
     #     start_pos = 0
@@ -63,7 +63,7 @@ class Solution:
     #             print(f"FOUND!! = {start_pos}")
     #             result.append(start_pos)
     #         start_pos += 1
-        
+
     #     return result
 
 
@@ -93,7 +93,7 @@ class Solution:
 
         for char in p:
             match_pool[char] += 1
-        
+
         for char in s[:len(p)]:
             search_pool[char] += 1
 
@@ -107,7 +107,7 @@ class Solution:
                 start_pos += 1
             else:
                 break
-            
+
 
         return result
 
@@ -126,15 +126,15 @@ class Solution:
     #             if match_pool[s[right]] == 0:
     #                 len_match_pool -= 1
     #         right += 1
-    #         while not len_match_pool: 
+    #         while not len_match_pool:
     #             if right - left == len(p):
     #                 result.append(left)
     #             if s[left] in match_pool:
     #                 match_pool[s[left]] += 1
     #                 if  match_pool[s[left]] == 1: len_match_pool += 1
-                
+
     #             left += 1
-                
+
     #     return result
 
 
@@ -153,12 +153,14 @@ class TestMethods(unittest.TestCase):
     def test_sample02(self):
         self.assertEqual([1], self.sol.findAnagrams(s="baa", p="aa"))
 
-        
 
-    
+
+
 
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

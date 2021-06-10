@@ -1,5 +1,5 @@
 """
-The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: 
+The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this:
 (you may want to display this pattern in a fixed font for better legibility)
 
 P   A   H   N
@@ -37,7 +37,7 @@ class Solution:
     def convert(self, s: str, numRows: int) -> str:
         lstResult = [[str("")] * numRows]
         strResult = ""
-        
+
         state = "zig"
         col = 0
         row = 0
@@ -58,7 +58,7 @@ class Solution:
                     state = "zag"
                 else:
                     break
-            
+
             lstResult[col][row] = char
 
             if state == "zig":
@@ -70,11 +70,11 @@ class Solution:
 
 
         # print(f"lstResult = {lstResult}")
-        
+
         for row in range(numRows):
             for col in range(len(lstResult)):
                 strResult += lstResult[col][row]
-        
+
         # print(f"strResult = {strResult}")
         return strResult
 
@@ -98,7 +98,9 @@ class TestMethods(unittest.TestCase):
         self.assertEqual("ACEBDF", self.sol.convert(s = "ABCDEF", numRows = 2))
 
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

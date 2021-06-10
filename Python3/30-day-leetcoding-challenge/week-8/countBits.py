@@ -22,11 +22,11 @@ Follow up:
     Space complexity should be O(n).
     Can you do it like a boss? Do it without using any builtin function like __builtin_popcount in c++ or in any other language.
 
-   Hide Hint #1  
+   Hide Hint #1
 You should make use of what you have produced already.
-   Hide Hint #2  
+   Hide Hint #2
 Divide the numbers in ranges like [2-3], [4-7], [8-15] and so on. And try to generate new range from previous.
-   Hide Hint #3  
+   Hide Hint #3
 Or does the odd/even status of the number help you in calculating the number of 1s?
 """
 
@@ -65,7 +65,9 @@ class TestMethods(unittest.TestCase):
         self.assertEqual([0,1,1,2,1,2], self.sol.countBits(5))
 
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

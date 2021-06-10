@@ -18,7 +18,7 @@ Note:
 
 Only the space character ' ' is considered a whitespace character.
 Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.
- 
+
 
 Example 1:
 
@@ -85,7 +85,7 @@ Step 3: "-91283472332" ("91283472332" is read in)
                      ^
 The parsed integer is -91283472332.
 Since -91283472332 is less than the lower bound of the range [-231, 231 - 1], the final result is clamped to -231 = -2147483648.
- 
+
 
 Constraints:
 
@@ -145,7 +145,9 @@ class TestMethods(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

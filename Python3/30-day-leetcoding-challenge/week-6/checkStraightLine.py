@@ -36,7 +36,7 @@ class Solution:
     #             return False
     #         step += 2
 
-        
+
     def isPerfectSquare(self, num: int) -> bool:
         if num % 10 in (2,3,7,8):
             return False
@@ -68,9 +68,11 @@ class TestMethods(unittest.TestCase):
     def test_sample03(self):
         self.assertEqual(False, self.sol.isPerfectSquare(2147483647))
 
-    
+
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         # sol = Solution()

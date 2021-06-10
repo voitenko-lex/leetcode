@@ -17,8 +17,8 @@ Input: 120
 Output: 21
 
 Note:
-Assume we are dealing with an environment which could only store integers within the 
-32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem, 
+Assume we are dealing with an environment which could only store integers within the
+32-bit signed integer range: [−2^31,  2^31 − 1]. For the purpose of this problem,
 assume that your function returns 0 when the reversed integer overflows.
 """
 
@@ -34,7 +34,7 @@ class Solution:
             result = result * 10 + a
             x = x // 10
             # print(f"x={x} result={result}" )
-        
+
         result = k*(result * 10 + x)
         if abs(result) > 2**31: result = 0
         return result
@@ -58,7 +58,9 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(0, self.sol.reverse(123456789))
 
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

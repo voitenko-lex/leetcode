@@ -26,7 +26,7 @@ Example 4:
 Example 5:
     Input: nums1 = [2], nums2 = []
     Output: 2.00000
- 
+
 Constraints:
     nums1.length == m
     nums2.length == n
@@ -103,7 +103,9 @@ class TestMethods(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

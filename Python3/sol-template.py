@@ -26,7 +26,9 @@ class TestMethods(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

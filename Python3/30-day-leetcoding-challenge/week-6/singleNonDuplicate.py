@@ -4,8 +4,8 @@
 """
 Single Element in a Sorted Array
 
-You are given a sorted array consisting of only integers where every element 
-appears exactly twice, except for one element which appears exactly once. 
+You are given a sorted array consisting of only integers where every element
+appears exactly twice, except for one element which appears exactly once.
 Find this single element that appears only once.
 
 Example 1:
@@ -27,7 +27,7 @@ import collections
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
         res = 0
-        
+
         for n in nums:
             res ^= n
         return res
@@ -42,9 +42,11 @@ class TestMethods(unittest.TestCase):
     def test_sample01(self):
         self.assertEqual(10, self.sol.singleNonDuplicate([3,3,7,7,10,11,11]))
 
-    
+
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

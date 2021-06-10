@@ -4,7 +4,7 @@
 """
 Check If It Is a Straight Line
 
-You are given an array coordinates, coordinates[i] = [x, y], where [x, y] 
+You are given an array coordinates, coordinates[i] = [x, y], where [x, y]
 represents the coordinate of a point. Check if these points make a straight line in the XY plane.
 
 Example 1:
@@ -54,9 +54,11 @@ class TestMethods(unittest.TestCase):
     def test_sample01(self):
         self.assertEqual(False, self.sol.checkStraightLine([[1,1],[2,2],[3,4],[4,5],[5,6],[7,7]]))
 
-    
+
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

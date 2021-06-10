@@ -31,7 +31,7 @@ class Solution:
 
         for char in J:
             result += S.count(char)
-        
+
         return result
 
 
@@ -46,7 +46,9 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(0, self.sol.numJewelsInStones(J="z", S="ZZ"))
 
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

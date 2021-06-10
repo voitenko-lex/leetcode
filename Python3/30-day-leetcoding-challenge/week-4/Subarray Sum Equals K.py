@@ -60,7 +60,7 @@ class Solution:
         print(f"\n {scores}")
         for el in scores:
             if scores[el] == N-1: return el
-        
+
         return -1
 
 
@@ -87,7 +87,9 @@ class TestMethods(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

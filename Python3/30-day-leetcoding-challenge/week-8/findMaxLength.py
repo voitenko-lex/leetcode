@@ -18,7 +18,7 @@ Input: [0,1,0]
 Output: 2
 Explanation: [0, 1] (or [1, 0]) is a longest contiguous subarray with equal number of 0 and 1.
 
-Note: The length of the given binary array will not exceed 50,000. 
+Note: The length of the given binary array will not exceed 50,000.
 """
 
 import unittest
@@ -41,7 +41,7 @@ class Solution:
                 result = max(result, i - counts[level])
             else:
                 counts[level] = i
-        
+
         return result
 
 
@@ -61,7 +61,9 @@ class TestMethods(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

@@ -12,7 +12,7 @@ return 0.
 s = "loveleetcode",
 return 2.
 
-Note: You may assume the string contain only lowercase letters. 
+Note: You may assume the string contain only lowercase letters.
 
 """
 
@@ -46,7 +46,9 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(-1, self.sol.firstUniqChar("dodo"))
 
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

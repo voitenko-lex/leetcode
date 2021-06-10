@@ -6,32 +6,32 @@
 
 Given a set of N people (numbered 1, 2, ..., N), we would like to split everyone into two groups of any size.
 
-Each person may dislike some other people, and they should not go into the same group. 
+Each person may dislike some other people, and they should not go into the same group.
 
-Formally, if dislikes[i] = [a, b], it means it is not allowed to put the people numbered a and b 
+Formally, if dislikes[i] = [a, b], it means it is not allowed to put the people numbered a and b
 into the same group.
 
 Return true if and only if it is possible to split everyone into two groups in this way.
 
- 
+
 
 Example 1:
 
-Input: 
-Output: 
+Input:
+Output:
 Explanation: group1 [1,4], group2 [2,3]
 
 Example 2:
 
-Input: 
-Output: 
+Input:
+Output:
 
 Example 3:
 
-Input: 
-Output: 
+Input:
+Output:
 
- 
+
 
 Constraints:
 
@@ -50,7 +50,7 @@ import collections
 class Solution:
     def possibleBipartition(self, N: int, dislikes: List[List[int]]) -> bool:
         # if not dislikes: return True
-        
+
         def dfs(i):
             open_list = [i]
             colors[i] = 1
@@ -69,11 +69,11 @@ class Solution:
         for a, b in dislikes:
             connections[a].append(b)
             connections[b].append(a)
-        
+
         colors = {}
         for i in range(1, N+1):
             if i not in colors and not dfs(i): return False
-        return True  
+        return True
 
 
 class TestMethods(unittest.TestCase):
@@ -98,7 +98,9 @@ class TestMethods(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

@@ -32,12 +32,12 @@ Example 4:
 
 Input: x = -101
 Output: false
- 
+
 
 Constraints:
 
 -231 <= x <= 231 - 1
- 
+
 """
 
 import unittest
@@ -83,7 +83,9 @@ class TestMethods(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

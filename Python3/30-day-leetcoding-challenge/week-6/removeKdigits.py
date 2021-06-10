@@ -43,13 +43,13 @@ class Solution:
     #             test = num[:i] + num[i+1:]
     #             if test:
     #                 test_num = int(test)
-    #             else: 
+    #             else:
     #                 test_num = 0
     #             if test_num < min_num: min_num = test_num
     #         result = str(min_num)
     #         result = self.removeKdigits(result, k-1)
     #     return result
-    
+
     # def removeKdigits2(self, num: str, k: int) -> str:
     #     if len(num) <= k: return "0"
     #     i = 1
@@ -60,7 +60,7 @@ class Solution:
     #             if i>1: i -= 1
     #         else:
     #             i += 1
-        
+
     #     if k>0:
     #         num = num[:-k]
 
@@ -68,7 +68,7 @@ class Solution:
     #         num = str(int(num))
     #     else:
     #         num = "0"
-        
+
     #     return num
 
     def removeKdigits(self, num: str, k: int) -> str:
@@ -108,9 +108,11 @@ class TestMethods(unittest.TestCase):
     def test_sample04(self):
         self.assertEqual("0", self.sol.removeKdigits(num = "1234567890", k = 9))
 
-    
+
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

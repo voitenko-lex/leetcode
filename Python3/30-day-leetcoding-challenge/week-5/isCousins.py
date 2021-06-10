@@ -9,7 +9,7 @@ Two nodes of a binary tree are cousins if they have the same depth, but have dif
 We are given the root of a binary tree with unique values, and the values x and y of two different nodes in the tree.
 Return true if and only if the nodes corresponding to the values x and y are cousins.
 
- 
+
 
 Example 1:
     Input: root = [1,2,3,4], x = 4, y = 3
@@ -40,7 +40,7 @@ class TreeNode:
         self.val = val
         self.left = left
         self.right = right
-    
+
     def PrintTree(self):
         print(self.val)
         if self.left:
@@ -60,15 +60,15 @@ class Solution:
             bt_dict - dictionary of levels for each value in binary tree
         """
         bt_dict[bt.val] = [depth, prnt]
-        
+
         if bt.left:
             bt_dict = self.getBTschem(bt.left, depth+1, bt.val, bt_dict)
         if bt.right:
             bt_dict = self.getBTschem(bt.right, depth+1, bt.val, bt_dict)
-        
+
         return bt_dict
 
-    
+
     def isCousins(self, root: TreeNode, x: int, y: int) -> bool:
         dict_lvl = self.getBTschem(root)
         print(dict_lvl)
@@ -94,18 +94,20 @@ class TestMethods(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()
-        tree = TreeNode(    1, 
-                            TreeNode(   2, 
-                                        TreeNode(   4, 
-                                                    None, 
-                                                    None), 
-                                        None), 
-                            TreeNode(   3, 
-                                        None, 
+        tree = TreeNode(    1,
+                            TreeNode(   2,
+                                        TreeNode(   4,
+                                                    None,
+                                                    None),
+                                        None),
+                            TreeNode(   3,
+                                        None,
                                         None))
         # tree.PrintTree()
         print(sol.isCousins(root = tree, x = 3, y = 4))

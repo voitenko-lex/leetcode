@@ -27,7 +27,7 @@ class Solution:
         result_len = 1
 
         # print(f"{s}")
-        
+
 
         for cur_pos, char in enumerate(s):
             nchars = s.count(char, cur_pos)
@@ -44,8 +44,8 @@ class Solution:
 
         return result_txt
 
-            
-    
+
+
     # def longestPalindrome(self, s: str) -> str:
     #     """
     #     7312 ms / 12.9 MB
@@ -58,10 +58,10 @@ class Solution:
     #             if sample == sample[::-1]:
     #                 if len(result_txt) < len(sample):
     #                     result_txt = sample
-        
+
     #     return result_txt
 
-    
+
     # def longestPalindrome(self, s: str) -> str:
     #     """
     #     4808 ms / 13.6 MB
@@ -75,7 +75,7 @@ class Solution:
     #                 if sample == sample[::-1]:
     #                     if len(result_txt) < len(sample):
     #                         result_txt = sample
-        
+
     #     return result_txt
 
 
@@ -93,12 +93,14 @@ class TestMethods(unittest.TestCase):
 
     def test_sample02(self):
         self.assertEqual("a", self.sol.longestPalindrome("a"))
-    
+
     def test_sample03(self):
         self.assertEqual("", self.sol.longestPalindrome(""))
 
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         # print("12345"[-1:2])

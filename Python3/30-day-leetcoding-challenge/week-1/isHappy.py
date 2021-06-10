@@ -8,11 +8,11 @@ A happy number is a number defined by the following process: Starting with any p
 
 Return True if n is a happy number, and False if not.
 
-Example: 
+Example:
 
 Input: 19
 Output: true
-Explanation: 
+Explanation:
 1**2 + 9**2 = 82
 8**2 + 2**2 = 68
 6**2 + 8**2 = 100
@@ -39,7 +39,9 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(True, self.sol.isHappy(19))
 
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

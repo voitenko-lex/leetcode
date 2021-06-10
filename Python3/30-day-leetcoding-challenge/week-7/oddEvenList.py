@@ -30,13 +30,13 @@ from typing import List, Set, Tuple, Dict
 def toListNode(source):
     last_node = None
     first_node = None
-    
+
     for i in source:
         node = ListNode(i)
         if not first_node: first_node = node
         if last_node: last_node.next = node
         last_node = node
-    
+
     return first_node
 
 # Definition for singly-linked list.
@@ -52,7 +52,7 @@ class ListNode:
             result = result + " -> " + str(pointer.val)
             pointer = pointer.next
         return result
-    
+
 
 class Solution:
     def oddEvenList(self, head: ListNode) -> ListNode:
@@ -77,7 +77,7 @@ class Solution:
         if odd_last: odd_last.next = even_first
         if even_last: even_last.next = None
 
-        return head        
+        return head
 
 class TestMethods(unittest.TestCase):
     sol = Solution()
@@ -96,9 +96,11 @@ class TestMethods(unittest.TestCase):
     def test_sample02(self):
         self.oddEvenListTest([1], [1])
 
-    
+
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

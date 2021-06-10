@@ -49,7 +49,9 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(4, self.sol.singleNumber([4,1,2,1,2]))
 
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         sol = Solution()

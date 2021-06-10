@@ -14,7 +14,7 @@ trie.insert("apple");
 trie.search("apple");   // returns true
 trie.search("app");     // returns false
 trie.startsWith("app"); // returns true
-trie.insert("app");   
+trie.insert("app");
 trie.search("app");     // returns true
 
 Note:
@@ -64,7 +64,7 @@ class Trie:
         else:
             self.end = True
 
-        
+
 
     def search(self, word: str) -> bool:
         """
@@ -79,9 +79,9 @@ class Trie:
                 result = self.childs[char].search(word)
         else:
             if self.end: result = True
-        
+
         return result
-        
+
 
     def startsWith(self, prefix: str) -> bool:
         """
@@ -96,9 +96,9 @@ class Trie:
                 result = self.childs[char].startsWith(prefix)
         else:
             result = True
-        
+
         return result
-        
+
 
 
 class TestMethods(unittest.TestCase):
@@ -112,22 +112,24 @@ class TestMethods(unittest.TestCase):
                 result.append(func(*arg))
             except AttributeError:
                 pass
-        
+
         print(f"trie:")
         print(trie)
 
         return result
-    
+
     def test_sample00(self):
-        self.assertEqual([], 
+        self.assertEqual([],
                         self.trie_test(   ["Trie","insert","search","search","startsWith","insert","search"],
                                             [[],["apple"],["apple"],["app"],["app"],["app"],["app"]]
                                         )
                         )
 
-    
+
 if __name__ == '__main__':
-    if False:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         # Your Trie object will be instantiated and called as such:

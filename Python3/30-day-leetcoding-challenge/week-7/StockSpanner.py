@@ -4,23 +4,23 @@
 """
 ## Online Stock Span
 
-Write a class StockSpanner which collects daily price quotes for some stock, 
+Write a class StockSpanner which collects daily price quotes for some stock,
 and returns the span of that stock's price for the current day.
 
-The span of the stock's price today is defined as the maximum number of 
-consecutive days (starting from today and going backwards) for which the 
+The span of the stock's price today is defined as the maximum number of
+consecutive days (starting from today and going backwards) for which the
 price of the stock was less than or equal to today's price.
 
-For example, if the price of a stock over the next 7 days were [100, 80, 60, 70, 60, 75, 85], 
+For example, if the price of a stock over the next 7 days were [100, 80, 60, 70, 60, 75, 85],
 then the stock spans would be [1, 1, 1, 2, 1, 4, 6].
 
- 
+
 
 Example 1:
 
 Input: ["StockSpanner","next","next","next","next","next","next","next"], [[],[100],[80],[60],[70],[60],[75],[85]]
 Output: [null,1,1,1,2,1,4,6]
-Explanation: 
+Explanation:
 First, S = StockSpanner() is initialized.  Then:
 S.next(100) is called and returns 1,
 S.next(80) is called and returns 1,
@@ -33,7 +33,7 @@ S.next(85) is called and returns 6.
 Note that (for example) S.next(75) returned 4, because the last 4 prices
 (including today's price of 75) were less than or equal to today's price.
 
- 
+
 
 Note:
 
@@ -64,18 +64,18 @@ class Stock:
 
         if self.previous: desc = desc + f"{self.previous}"
         return desc
-    
+
     def get_stockspan(self, level):
         stockspan_value = 0
         stockspan_last = self
         if self.price <= level:
             stockspan_value += 1
             stockspan_last = self.previous
-            if self.previous: 
+            if self.previous:
                 prev_stockspan_value, prev_stockspan_last = self.previous.get_stockspan(level)
                 stockspan_value += prev_stockspan_value
                 if prev_stockspan_last: stockspan_last = prev_stockspan_last
-        
+
         return stockspan_value, stockspan_last
 
     def get_stockspan_fast(self, level):
@@ -90,9 +90,9 @@ class Stock:
             if self.stockspan_value > 1:
                 stockspan_last = self.stockspan_last
                 stockspan_value = self.stockspan_value
-            elif self.previous: 
+            elif self.previous:
                 stockspan_last = self.previous
-            
+
             if stockspan_last:
                 prev_stockspan_value, prev_stockspan_last = stockspan_last.get_stockspan_fast(level)
                 stockspan_value += prev_stockspan_value
@@ -106,7 +106,7 @@ class StockSpanner:
 
     def __init__(self):
         self.last = None
-        
+
     def next(self, price: int) -> int:
         next_stock = Stock(price)
         next_stock.previous = self.last
@@ -118,12 +118,12 @@ class StockSpanner:
         self.last.stockspan_last = stockspan_last
 
         return stockspan_value
-    
+
     def __str__(self):
         return f"{self.last}"
-    
 
-        
+
+
 
 
 class TestMethods(unittest.TestCase):
@@ -135,8 +135,8 @@ class TestMethods(unittest.TestCase):
             # func = getattr(stockspanner, method)
             # stock_span = func(*arg)
             # print(f"method = {method} arg = {arg} stock_span = {stock_span} ")
-            # result.append(stock_span)            
-            
+            # result.append(stock_span)
+
             try:
                 func = getattr(stockspanner, method)
                 stock_span = func(*arg)
@@ -146,29 +146,31 @@ class TestMethods(unittest.TestCase):
                 pass
 
 
-        
+
             print("="*20)
             print(stockspanner)
 
         return result
-    
+
     def test_sample00(self):
-        self.assertEqual([1, 1, 1, 2, 1, 4, 6], 
+        self.assertEqual([1, 1, 1, 2, 1, 4, 6],
                         self.stockspanner_test( ["StockSpanner","next","next","next","next","next","next","next"],
                                                 [[],[100],[80],[60],[70],[60],[75],[85]])
                         )
-        
+
     def test_sample01(self):
-        self.assertEqual([1,2,3,4,5], 
+        self.assertEqual([1,2,3,4,5],
                         self.stockspanner_test( ["StockSpanner","next","next","next","next","next"],
                                                 [[],[31],[41],[48],[59],[79]])
                         )
 
-       
 
-    
+
+
 if __name__ == '__main__':
-    if True:
+    do_unittests = False
+
+    if do_unittests:
         unittest.main()
     else:
         # Your StockSpanner object will be instantiated and called as such:
